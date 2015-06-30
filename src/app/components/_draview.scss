@@ -1,0 +1,120 @@
+[drag-view]{
+	position: absolute;
+	top:0;
+	left:0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+}
+
+
+// (c) liljeblad
+// all are !important so that it overrides elements style tag
+// which is set while dragging the elment around
+//
+// style tag cannot be removed because it causes flickering and
+// view bounces around the screen
+//
+// overriding with !important produces better results
+//
+$view-transition : 0.4s;
+
+[drag-view]{
+	&.ng-animate{
+		transition: $view-transition !important;
+	}
+
+	&.ng-enter{
+		transform: translate3d(100%, 0,0) !important;
+		z-index: 2;
+	}
+
+	&.ng-enter-active{
+		transform: translate3d(0, 0,0) !important;
+	}
+
+	&.ng-leave-active{
+		transform: translate3d(0, 0,0) !important;
+		z-index: 1;
+	}
+
+	&.ng-leave{
+		transform: translate3d(-100%, 0,0) !important;
+		z-index: 1;
+	}
+}
+
+.animation-direction-back [drag-view]{
+	&.ng-animate{
+		transition: $view-transition !important;
+	}
+
+	&.ng-enter{
+		transform: translate3d(-100%, 0,0) !important;
+		z-index: 2;
+	}
+
+	&.ng-enter-active{
+		transform: translate3d(0, 0,0) !important;
+	}
+
+	&.ng-leave-active{
+		transform: translate3d(0, 0,0) !important;
+		z-index: 1;
+	}
+
+	&.ng-leave{
+		transform: translate3d(100%, 0,0) !important;
+		z-index: 1;
+	}
+}
+
+.animation-direction-up [drag-view]{
+	&.ng-animate{
+		transition: $view-transition !important;
+	}
+
+	&.ng-enter{
+		transform: translate3d(0,-100%,0) !important;
+		z-index: 2;
+	}
+
+	&.ng-enter-active{
+		transform: translate3d(0, 0,0) !important;
+	}
+
+	&.ng-leave-active{
+		transform: translate3d(0, 0,0) !important;
+		z-index: 1;
+	}
+
+	&.ng-leave{
+		transform: translate3d(0,100%,0) !important;
+		z-index: 1;
+	}
+}
+
+.animation-direction-down [drag-view]{
+	&.ng-animate{
+		transition: $view-transition !important;
+	}
+
+	&.ng-enter{
+		transform: translate3d(0,100%,0) !important;
+		z-index: 2;
+	}
+
+	&.ng-enter-active{
+		transform: translate3d(0, 0,0) !important;
+	}
+
+	&.ng-leave-active{
+		transform: translate3d(0, 0,0) !important;
+		z-index: 1;
+	}
+
+	&.ng-leave{
+		transform: translate3d(0,-100%,0) !important;
+		z-index: 1;
+	}
+}
